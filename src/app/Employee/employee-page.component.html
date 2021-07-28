@@ -1,0 +1,45 @@
+<div class="row">
+  <div class="col-md-4">
+    <div class="table-responsive">
+      <table class="table mb-0">
+        <thead>
+          <tr>
+            <th [appSort] = "employeeListAll" data-order="desc" data-name="employeeName" scope="col">
+              Employee Name</th>
+            <th [appSort] = "employeeListAll" data-order="desc" data-name="employeeAge" scope="col">
+              Employee Age</th>
+          </tr>
+        </thead>
+        <tbody *ngFor ="let employee of employeeListAll">
+          <tr>
+            <td> {{employee.employeeName}} </td>
+            <td> {{employee.employeeAge}} </td>
+            <td>
+              <button (click)="OnSelected(employee.employeeName)">Click</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="col-md-8">
+    <div class="card-body" *ngIf="employeeService.selectedEmployee$ | async as selectedEmployee">
+      <div class="row">
+        <div class="col-md-2">Name</div>
+        <div class="col-md-6">{{ selectedEmployee.employeeName }}</div>
+      </div>
+      <div class="row">
+        <div class="col-md-2">Age</div>
+        <div class="col-md-6">{{selectedEmployee.employeeAge}}</div>
+      </div>
+      <div class="row">
+        <div class="col-md-2">Department</div>
+        <div class="col-md-6">{{selectedEmployee.employeeDept}}</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+
